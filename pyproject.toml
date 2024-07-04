@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pystats19"
+version = "0.0.1"
+description = "Python package for working with open road traffic casualty data from Great Britain"
+authors = [
+    { name = "Jinshuai Ma", email = "mayazureee@gmail.com" }
+]
+dependencies = [
+    "pandas",
+
+]
+
+[tool.setuptools.packages.find]
+include = ["pystats19"]
+
+[tool.setuptools.package-data]
+pystats19 = ["data/*.pkl"]
