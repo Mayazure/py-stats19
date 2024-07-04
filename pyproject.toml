@@ -7,11 +7,11 @@ name = "pystats19"
 version = "0.0.1"
 description = "Python package for working with open road traffic casualty data from Great Britain"
 authors = [
-    { name = "Jinshuai Ma", email = "mayazureee@gmail.com" }
+    { name = "Jinshuai Ma", email = "j.ma23@lse.ac.uk" },
+    { name = "Xiaowei Gao", email = "ucesxwg@ucl.ac.uk" }
 ]
 dependencies = [
-    "pandas",
-
+    "pandas"
 ]
 
 [tool.setuptools.packages.find]

@@ -2,6 +2,14 @@
 
 Ported from the [R stats19 package](https://github.com/ropensci/stats19)
 
+## Installation
+
+Download the latest release, e.g. [pystats19-0.0.1-py3-none-any.whl](https://github.com/Mayazure/py-stats19/releases/download/py-stats19-v0.0.1/pystats19-0.0.1-py3-none-any.whl).
+
+```bash
+$ pip install pystats19-0.0.1-py3-none-any.whl
+```
+
 ## list_files()
 
 `list_files()` can list all available stats19 dataset files, which can be simply filtered by passing `years` and `type_` arguments.
