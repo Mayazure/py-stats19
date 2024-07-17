@@ -3,11 +3,11 @@ import warnings
 from typing import Iterable
 
 import pandas as pd
+import geopandas as gpd
 
 from pystats19 import option, FILE_NAMES
 from pystats19.dl import dl_stats19
-from pystats19.format import format_stats19
-
+from pystats19.format import convert_id_to_label, add_temporal_info, add_geo_info
 
 types = ("collisions", "casualty", "vehicle")
 
@@ -68,18 +68,23 @@ def detect_type(filename: str):
 def load(
         filename: str,
         data_dir=option.data_directory,
-        format_: bool = True,
-        auto_download: bool = False
-):
+        auto_download: bool = False,
+        format_label: bool = True,
+        format_temporal_info: bool = False,
+        format_geo_info: bool = False,
+) -> pd.DataFrame | gpd.GeoDataFrame:
+
     local_filepath = os.path.join(data_dir, filename)
     if not os.path.exists(local_filepath):
         if auto_download:
             pull(filename, data_dir=data_dir)
         else:
-            raise FileNotFoundError(filename)
-
+            raise FileNotFoundError(local_filepath)
     df = pd.read_csv(local_filepath)
-    if format_:
-        df = format_stats19(df, detect_type(filename))
-
+    if format_label:
+        df = convert_id_to_label(df, detect_type(filename))
+    if format_temporal_info:
+        df = add_temporal_info(df)
+    if format_geo_info:
+        df = add_geo_info(df)
     return df

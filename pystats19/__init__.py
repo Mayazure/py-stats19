@@ -9,6 +9,8 @@ DEFAULT_DOWNLOAD_DIRECTORY = Path.home() / ".stats19"
 DEFAULT_SOURCE_DOMAIN = "https://data.dft.gov.uk"
 DEFAULT_SOURCE_DIRECTORY = "road-accidents-safety-data"
 
+PREFIX = "dft-road-casualty-statistics-"
+
 FILE_NAMES = [
     "dft-road-casualty-statistics-casualty-adjustment-lookup_2004-latest-published-year.csv",
     "dft-road-casualty-statistics-collision-adjustment-lookup_2004-latest-published-year.csv",

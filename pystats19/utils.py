@@ -1,9 +1,6 @@
-import os.path
-import warnings
-from datetime import datetime
 from urllib.parse import urljoin
 
-from pystats19 import FILE_NAMES, DEFAULT_SOURCE_DOMAIN, DEFAULT_SOURCE_DIRECTORY, option
+from pystats19 import DEFAULT_SOURCE_DOMAIN, DEFAULT_SOURCE_DIRECTORY
 
 
 def get_url(

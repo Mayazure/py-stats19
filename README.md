@@ -52,9 +52,9 @@ pull('dft-road-casualty-statistics-vehicle-2019.csv', data_dir="./data")
 from pystats19.source import load
 
 load(
-    'dft-road-casualty-statistics-vehicle-2019.csv', 
+    'dft-road-casualty-statistics-vehicle-2019.csv',
     data_dir="./data",
-    format_=True,
+    format_label=True,
     auto_download=True
 )
 

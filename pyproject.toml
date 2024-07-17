@@ -11,7 +11,9 @@ authors = [
     { name = "Xiaowei Gao", email = "ucesxwg@ucl.ac.uk" }
 ]
 dependencies = [
-    "pandas"
+    "pandas",
+    "geopandas",
+    "shapely"
 ]
 
 [tool.setuptools.packages.find]
