@@ -1,63 +1,39 @@
+import logging
 import os
-import pandas as pd
-from importlib.resources import path
+from logging import getLogger
 
+import pandas as pd
 from pathlib import Path
+from importlib.resources import path
 
 DEFAULT_DOWNLOAD_DIRECTORY = Path.home() / ".stats19"
 
-DEFAULT_SOURCE_DOMAIN = "https://data.dft.gov.uk"
-DEFAULT_SOURCE_DIRECTORY = "road-accidents-safety-data"
-
-PREFIX = "dft-road-casualty-statistics-"
-
-FILE_NAMES = [
-    "dft-road-casualty-statistics-casualty-adjustment-lookup_2004-latest-published-year.csv",
-    "dft-road-casualty-statistics-collision-adjustment-lookup_2004-latest-published-year.csv",
-    "dft-road-casualty-statistics-vehicle-e-scooter-2020-Latest-Published-Year.csv",
-    "dft-road-casualty-statistics-historical-revisions-data.csv",
-    "dft-road-casualty-statistics-casualty-2022.csv",
-    "dft-road-casualty-statistics-vehicle-2022.csv",
-    "dft-road-casualty-statistics-collision-2022.csv",
-    "dft-road-casualty-statistics-casualty-1979-latest-published-year.csv",
-    "dft-road-casualty-statistics-vehicle-1979-latest-published-year.csv",
-    "dft-road-casualty-statistics-collision-1979-latest-published-year.csv",
-    "dft-road-casualty-statistics-casualty-2021.csv",
-    "dft-road-casualty-statistics-vehicle-2021.csv",
-    "dft-road-casualty-statistics-collision-2021.csv",
-    "dft-road-casualty-statistics-casualty-2020.csv",
-    "dft-road-casualty-statistics-vehicle-2020.csv",
-    "dft-road-casualty-statistics-collision-2020.csv",
-    "dft-road-casualty-statistics-casualty-2019.csv",
-    "dft-road-casualty-statistics-vehicle-2019.csv",
-    "dft-road-casualty-statistics-collision-2019.csv",
-    "dft-road-casualty-statistics-casualty-2018.csv",
-    "dft-road-casualty-statistics-vehicle-2018.csv",
-    "dft-road-casualty-statistics-collision-2018.csv",
-    "dft-road-casualty-statistics-casualty-last-5-years.csv",
-    "dft-road-casualty-statistics-vehicle-last-5-years.csv",
-    "dft-road-casualty-statistics-collision-last-5-years.csv",
-]
-
 
 class Option:
-    timeout = 60
-    data_directory = os.environ.get(
-        "STATS19_DOWNLOAD_DIRECTORY",
-        DEFAULT_DOWNLOAD_DIRECTORY
-    )
+
+    @property
+    def data_directory(self):
+        return os.environ.get(
+            "STATS19_DOWNLOAD_DIRECTORY",
+            DEFAULT_DOWNLOAD_DIRECTORY
+        )
 
 
-option = Option()
+options = Option()
 
-# print(option.data_directory)
+with path("pystats19.data", "pystats19_prebuilt_schema.pkl") as p:
+    stats19_prebuilt_index = pd.read_pickle(p)
+    stats19_data_files = stats19_prebuilt_index["STATS19_DATA_FILES"]
+    stats19_adjustment_files = stats19_prebuilt_index["STATS19_ADJUSTMENT_FILES"]
+    stats19_dataguide_files = stats19_prebuilt_index["STATS19_DATAGUIDE_FILE"]
+    stats19_schema = stats19_prebuilt_index["STATS19_PREBUILT_SCHEMA"]
+    stats19_dataguide = stats19_prebuilt_index["STATS19_DATAGUIDE"]
+    stats19_file_table = stats19_prebuilt_index["STATS19_FILE_TABLE"]
+    stats19_table_dtype = stats19_prebuilt_index["STATS19_TABLE_DTYPE"]
+    stats19_file_year = stats19_prebuilt_index["STATS19_FILE_YEAR"]
+    stats19_code_label_map = stats19_prebuilt_index["STATS19_CODE_LABEL_MAP"]
+    stats19_source_domain = stats19_prebuilt_index["STATS19_SOURCE_DOMAIN"]
+    stats19_source_directory = stats19_prebuilt_index["STATS19_SOURCE_DIRECTORY"]
 
-
-with path("pystats19.data", "stats19_variables.pkl") as p:
-    stats19_variables = pd.read_pickle(p)
-
-with path("pystats19.data", "stats19_schema.pkl") as p:
-    stats19_schema: pd.DataFrame = pd.read_pickle(p)
-
-with path("pystats19.data", "file_names.pkl") as p:
-    file_names = pd.read_pickle(p)
+logger = getLogger(__name__)
+logger.setLevel(logging.INFO)

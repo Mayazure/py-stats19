@@ -1,4 +1,6 @@
 # stats19
+Xiaowei Gao(SpacetimeLab, UCL, UK), Jinshuai Ma(LSE Data Science Institute, UK)
+Supervised by Dr. James Haworth and Prof. Tao Cheng to support the digital twins for urban accident
 
 Ported from the [R stats19 package](https://github.com/ropensci/stats19)
 
@@ -39,9 +41,9 @@ list_files(years=range(2019,2023), type_="vehicle")
 Optionally, `data_dir` can specify the location where the file will be stored.
 
 ```python
-from pystats19.source import pull
+from pystats19.source import pull_file
 
-pull('dft-road-casualty-statistics-vehicle-2019.csv', data_dir="./data")
+pull_file('dft-road-casualty-statistics-vehicle-2019.csv', data_dir="./data")
 ```
 
 ## load()
