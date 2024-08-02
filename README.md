@@ -1,10 +1,28 @@
-# py-stats19
+🚸 # py-stats19
 
-**Authors:** Xiaowei Gao(SpacetimeLab, UCL, UK), Jinshuai Ma(LSE Data Science Institute, UK)
+**Authors:** 
 
-**Supervisors:** Dr. James Haworth, Prof. Tao Cheng
+Xiaowei Gao [📩 Email: ucesxwg@ucl.ac.uk] (SpacetimeLab, UCL, UK)
 
-**py-stats19** is a Python package developed to support digital twin applications for urban accident analysis. The package draws inspiration from the [R stats19 package](https://github.com/ropensci/stats19) and provides tools to download and format the [**Road Safety Data**](https://www.data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data) from the UK's official road traffic casualty database. The py-stats19 package is currently in development and testing stages. It is available as a beta version for early access.    
+Jinshuai Ma [📩 Email: j.ma23@lse.ac.uk] (LSE Data Science Institute, UK)
+
+**Supervisors:** 
+
+[Dr. James Haworth](https://profiles.ucl.ac.uk/24884), Associate Professor in Spatio-temporal Analytics, SpaceTimeLab, Department of Civil, Environmental and Geomatic Engineering, UCL
+
+[Prof. Tao Cheng](https://profiles.ucl.ac.uk/10774), Professor in GeoInformatics, SpaceTimeLab, Department of Civil, Environmental and Geomatic Engineering, UCL 
+
+
+
+
+🚸 **py-stats19**  is a Python package developed to support digital twin applications for spatio-temporal urban crash analysis. Inspired by the [**R stats19 package**](https://github.com/ropensci/stats19) package, this package provides a more efficient tool to download and format the Road Safety Data from the official [**Road Safety Database**](https://www.data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data) published by the Department for Transport, UK, since 1979. Additionally, **py-stats19** enhances the data by incorporating extra `temporal information` and `geometric details`.
+
+
+The whole data set contains three tables: `casualty`, `collision`, and `vehicle`. The data set is updated annually and contains detailed information about road traffic accidents in Great Britain.
+
+
+
+🧰 The current py-stats19 package is under development and testing stages. It is available as a beta version for early access.    
 
 ## Installation
 
@@ -16,7 +34,9 @@ $ pip install pystats19-0.0.1-py3-none-any.whl
 
 ## list_files()
 
-`list_files()` can list all available stats19 dataset files, which can be simply filtered by passing `year` and `table` arguments.
+`list_files()` can list all available stats19 dataset files, which can be simply filtered by passing `year` and `table` arguments. 
+
+Here, you could specify the table name as `casualty`, `collision`, or `vehicle`. Those files could be merged by the `accident_index` key.
 
 ```python
 from pystats19.read import list_files
