@@ -1,13 +1,23 @@
 from urllib.parse import urljoin
 
-from pystats19 import DEFAULT_SOURCE_DOMAIN, DEFAULT_SOURCE_DIRECTORY
+import pystats19
 
 
 def get_url(
         file_name="",
-        domain=DEFAULT_SOURCE_DOMAIN,
-        directory=DEFAULT_SOURCE_DIRECTORY
+        domain=pystats19.stats19_source_domain,
+        directory=pystats19.stats19_source_directory
 ):
     url = "/".join((directory, file_name)) if file_name else directory
     base = urljoin(domain, url)
     return base
+
+
+dtype_map = {
+    int: "Int64",
+    float: "Float64"
+}
+
+
+def replace_pd_dtype(dtype: dict):
+    return {k: dtype_map.get(v, v) for k, v in dtype.items()}
