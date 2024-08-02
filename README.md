@@ -1,8 +1,10 @@
-# stats19
-Xiaowei Gao(SpacetimeLab, UCL, UK), Jinshuai Ma(LSE Data Science Institute, UK)
-Supervised by Dr. James Haworth and Prof. Tao Cheng to support the digital twins for urban accident
+# py-stats19
 
-Ported from the [R stats19 package](https://github.com/ropensci/stats19)
+**Authors:** Xiaowei Gao(SpacetimeLab, UCL, UK), Jinshuai Ma(LSE Data Science Institute, UK)
+
+**Supervisors:** Dr. James Haworth, Prof. Tao Cheng
+
+**py-stats19** is a Python package developed to support digital twin applications for urban accident analysis. The package draws inspiration from the [R stats19 package](https://github.com/ropensci/stats19) and provides tools to download and format the [**Road Safety Data**](https://www.data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data) from the UK's official road traffic casualty database. The py-stats19 package is currently in development and testing stages. It is available as a beta version for early access.    
 
 ## Installation
 
