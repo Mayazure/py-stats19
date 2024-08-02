@@ -1,6 +1,6 @@
 import pandas as pd
 import geopandas as gpd
-from shapely import Point
+from shapely.geometry import Point
 
 from pystats19 import stats19_code_label_map, logger
 
