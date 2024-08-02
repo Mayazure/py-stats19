@@ -14,27 +14,32 @@ $ pip install pystats19-0.0.1-py3-none-any.whl
 
 ## list_files()
 
-`list_files()` can list all available stats19 dataset files, which can be simply filtered by passing `years` and `type_` arguments.
+`list_files()` can list all available stats19 dataset files, which can be simply filtered by passing `year` and `table` arguments.
 
 ```python
-from pystats19.source import list_files
+from pystats19.read import list_files
 
-list_files(years=2021)
- 
-# ['dft-road-casualty-statistics-casualty-2021.csv',
+# List all files contain year 2021 data
+list_files(year=2021) 
+# ['dft-road-casualty-statistics-casualty-1979-latest-published-year.csv',
+#  'dft-road-casualty-statistics-casualty-2021.csv',
+#  'dft-road-casualty-statistics-casualty-last-5-years.csv',
+#  'dft-road-casualty-statistics-collision-1979-latest-published-year.csv',
+#  'dft-road-casualty-statistics-collision-2021.csv',
+#  'dft-road-casualty-statistics-collision-last-5-years.csv',
+#  'dft-road-casualty-statistics-vehicle-1979-latest-published-year.csv',
 #  'dft-road-casualty-statistics-vehicle-2021.csv',
-#  'dft-road-casualty-statistics-collision-2021.csv']
-
-list_files(years=range(2019,2023), type_="vehicle")
-
-# ['dft-road-casualty-statistics-vehicle-2022.csv',
 #  'dft-road-casualty-statistics-vehicle-e-scooter-2020-Latest-Published-Year.csv',
-#  'dft-road-casualty-statistics-vehicle-2020.csv',
+#  'dft-road-casualty-statistics-vehicle-last-5-years.csv']
+
+# List all files contain year 2021 and table vehicle data
+list_files(year=2021, table="vehicle")
+# ['dft-road-casualty-statistics-vehicle-1979-latest-published-year.csv',
 #  'dft-road-casualty-statistics-vehicle-2021.csv',
-#  'dft-road-casualty-statistics-vehicle-2019.csv']
+#  'dft-road-casualty-statistics-vehicle-last-5-years.csv']
 ```
 
-## pull()
+## pull_file()
 
 `pull()` requires `filename` parameter, downloading the data file. `filename` should be obtained using `list_files()`.  
 
@@ -45,31 +50,50 @@ from pystats19.source import pull_file
 
 pull_file('dft-road-casualty-statistics-vehicle-2019.csv', data_dir="./data")
 ```
+### Data directory
+
+Data directory can also be configured globally by setting an environment variable *PYSTATS19_DOWNLOAD_DIRECTORY*
+
+```bash
+$ export PYSTATS19_DOWNLOAD_DIRECTORY=~/my_pystats19_data
+```
 
 ## load()
 
-`load()` loads the data file as a `pandas.DataFrame`. Set `auto_download` to `True` to automatically download the file if not exists. Set `format_` to `True` to format the data.
+`load()` loads the data file as a `pandas.DataFrame` or `geopandas.GeoDataFrame`. Set `auto_download=True` to automatically download the file if not exists. 
+
+Optionally, 
+
+set `convert_code_to_label=True` to convert categorical data codes to text labels.  
+
+set `add_temporal_info=True` to format `datetime` and `time` and add additional time information.
+
+set `add_geo_info=True` to add geo information. This will return a `geopandas.GeoDataFrame`.
 
 ```python
-from pystats19.source import load
+from pystats19.read import load
 
 load(
-    'dft-road-casualty-statistics-vehicle-2019.csv',
-    data_dir="./data",
-    format_label=True,
-    auto_download=True
+    'dft-road-casualty-statistics-collision-2021.csv',
+    auto_download=True,
+    convert_code_to_label=True,
+    add_temporal_info=True,
+    add_geo_info=True
 )
 
-#        accident_index  accident_year  ... driver_home_area_type  lsoa_of_driver
-# 0       2019010128300           2019  ...            Urban area              -1
-# 1       2019010128300           2019  ...            Urban area              -1
-# 2       2019010152270           2019  ...            Urban area              -1
-# 3       2019010152270           2019  ...            Urban area              -1
-# 4       2019010155191           2019  ...            Urban area              -1
-# ...               ...            ...  ...                   ...             ...
-# 216376  2019984107019           2019  ...                 Rural              -1
-# 216377  2019984107219           2019  ...            Small town              -1
-# 216378  2019984107219           2019  ...                 Rural              -1
-# 216379  2019984107419           2019  ...                 Rural              -1
-# 216380  201998QC01004           2019  ...            Urban area              -1
+# Removed 17 records due to missing Latitude or Longitude.
+# 
+#        accident_index  ...                       geometry
+# 0       2021010287148  ...   POINT (521509.659 193079.41)
+# 1       2021010287149  ...  POINT (535380.824 180783.228)
+# 2       2021010287151  ...  POINT (529702.828 170398.085)
+# 3       2021010287155  ...  POINT (525313.658 178385.183)
+# 4       2021010287157  ...  POINT (512145.497 171526.072)
+# ...               ...  ...                            ...
+# 101082  2021991196247  ...  POINT (325545.894 674547.399)
+# 101083  2021991196607  ...  POINT (271195.339 558271.954)
+# 101084  2021991197944  ...   POINT (357296.909 860766.24)
+# 101085  2021991200639  ...  POINT (326935.908 675924.391)
+# 101086  2021991201030  ...  POINT (270574.351 556367.939)
+# [101070 rows x 39 columns]
 ```

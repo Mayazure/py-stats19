@@ -14,7 +14,7 @@ class Option:
     @property
     def data_directory(self):
         return os.environ.get(
-            "STATS19_DOWNLOAD_DIRECTORY",
+            "PYSTATS19_DOWNLOAD_DIRECTORY",
             DEFAULT_DOWNLOAD_DIRECTORY
         )
 
