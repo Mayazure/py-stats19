@@ -15,7 +15,7 @@ Jinshuai Ma [📩 Email: j.ma23@lse.ac.uk] (LSE Data Science Institute, UK)
 
 
 
-🚸 **py-stats19**  is a Python package developed to support digital twin applications for spatio-temporal urban crash analysis. Inspired by the [**R stats19 package**](https://github.com/ropensci/stats19) package, this package provides a more efficient tool to download and format the Road Safety Data from the official [**Road Safety Database**](https://www.data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data) published by the Department for Transport, UK, since 1979. Additionally, **py-stats19** enhances the data by incorporating extra `temporal information` and `geometric details`.
+🚸 **py-stats19**  is a Python package developed to support digital twin applications for spatio-temporal urban crash analysis. Inspired by the [**R stats19 package**](https://github.com/ropensci/stats19) package, this package provides a Python version tool to download and format the Road Safety Data from the official [**Road Safety Database**](https://www.data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data) published by the Department for Transport, UK, since 1979. Additionally, **py-stats19** enhances the data by incorporating extra `temporal information` and `geometric details`.
 
 
 The whole data set contains three tables: `casualty`, `collision`, and `vehicle`. The data set is updated annually and contains detailed information about road traffic accidents in Great Britain.
@@ -32,7 +32,7 @@ Install using pip:
 $ pip install pystats19
 ```
 
-Download and install the latest release from Github, e.g. [pystats19-0.1.0-py3-none-any.whl](https://github.com/Mayazure/py-stats19/releases/download/v0.1.0/pystats19-0.1.0-py3-none-any.whl).
+Alternatively, download and install the latest release from Github, e.g. [pystats19-0.1.0-py3-none-any.whl](https://github.com/Mayazure/py-stats19/releases/download/v0.1.0/pystats19-0.1.0-py3-none-any.whl).
 
 ```bash
 $ pip install pystats19-0.1.0-py3-none-any.whl

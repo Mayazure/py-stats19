@@ -1,10 +1,9 @@
 import logging
 import os
-from logging import getLogger
-
 import pandas as pd
+from logging import getLogger
 from pathlib import Path
-from importlib.resources import path
+from importlib.resources import as_file, files
 
 DEFAULT_DOWNLOAD_DIRECTORY = Path.home() / ".stats19"
 
@@ -21,8 +20,8 @@ class Option:
 
 options = Option()
 
-with path("pystats19.data", "pystats19_prebuilt_schema.pkl") as p:
-    stats19_prebuilt_index = pd.read_pickle(p)
+with as_file(files("pystats19.data").joinpath("pystats19_prebuilt_schema.pkl")) as f:
+    stats19_prebuilt_index = pd.read_pickle(f)
     stats19_data_files = stats19_prebuilt_index["STATS19_DATA_FILES"]
     stats19_adjustment_files = stats19_prebuilt_index["STATS19_ADJUSTMENT_FILES"]
     stats19_dataguide_files = stats19_prebuilt_index["STATS19_DATAGUIDE_FILE"]

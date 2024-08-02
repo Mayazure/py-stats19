@@ -4,8 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pystats19"
-version = "0.1.0"
-description = "Python package for working with open road traffic casualty data from Great Britain"
+version = "0.1.1"
+requires-python = ">=3.10"
+description = "Python package for downloading and formatting the UK's Road Safety Data."
 authors = [
     { name = "Jinshuai Ma", email = "j.ma23@lse.ac.uk" },
     { name = "Xiaowei Gao", email = "ucesxwg@ucl.ac.uk" }
@@ -15,9 +16,10 @@ maintainers = [
     { name = "Xiaowei Gao", email = "ucesxwg@ucl.ac.uk" }
 ]
 dependencies = [
-    "pandas",
-    "geopandas",
-    "shapely"
+    "pandas >= 1.5.0",
+    "geopandas >= 0.12.0",
+    "shapely >= 1.8.5",
+    "numpy < 2.0.0"
 ]
 readme = "README.md"
 license = { file = "LICENSE"}
