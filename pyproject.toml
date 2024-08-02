@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pystats19"
-version = "0.0.1"
+version = "0.1.0"
 description = "Python package for working with open road traffic casualty data from Great Britain"
 authors = [
     { name = "Jinshuai Ma", email = "j.ma23@lse.ac.uk" },
