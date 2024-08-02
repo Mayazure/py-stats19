@@ -26,7 +26,13 @@ The whole data set contains three tables: `casualty`, `collision`, and `vehicle`
 
 ## Installation
 
-Download the latest release, e.g. [pystats19-0.1.0-py3-none-any.whl](https://github.com/Mayazure/py-stats19/releases/download/v0.1.0/pystats19-0.1.0-py3-none-any.whl).
+Install using pip:
+
+```bash
+$ pip install pystats19
+```
+
+Download and install the latest release from Github, e.g. [pystats19-0.1.0-py3-none-any.whl](https://github.com/Mayazure/py-stats19/releases/download/v0.1.0/pystats19-0.1.0-py3-none-any.whl).
 
 ```bash
 $ pip install pystats19-0.1.0-py3-none-any.whl
