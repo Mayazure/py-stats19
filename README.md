@@ -10,12 +10,14 @@ Jinshuai Ma [📩 Email: j.ma23@lse.ac.uk] (LSE Data Science Institute, UK)
 
 [Dr. James Haworth](https://profiles.ucl.ac.uk/24884), Associate Professor in Spatio-temporal Analytics, SpaceTimeLab, Department of Civil, Environmental and Geomatic Engineering, UCL
 
+[Dr. Stephen Law](https://profiles.ucl.ac.uk/21695-stephen-law/publications), Associate Professor in Urban Data Science, Department of Geography, UCL
+
 [Prof. Tao Cheng](https://profiles.ucl.ac.uk/10774), Professor in GeoInformatics, SpaceTimeLab, Department of Civil, Environmental and Geomatic Engineering, UCL 
 
 
 
 
-🚸 **py-stats19**  is a Python package developed to support digital twin applications for spatio-temporal urban crash analysis. Inspired by the [**R stats19 package**](https://github.com/ropensci/stats19) package, this package provides a Python version tool to download and format the Road Safety Data from the official [**Road Safety Database**](https://www.data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data) published by the Department for Transport, UK, since 1979. Additionally, **py-stats19** enhances the data by incorporating extra `temporal information` and `geometric details`.
+🚸 **py-stats19**  is a Python package developed to support digital twin applications for spatio-temporal urban crash analysis. Inspired by the [**R stats19**](https://github.com/ropensci/stats19) package, this package provides a Python version tool to download and format the Road Safety Data from the official [**Road Safety Database**](https://www.data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data) published by the Department for Transport, UK, since 1979. Additionally, **py-stats19** enhances the spatio-temporal data analysis by incorporating extra `temporal information` and `geometric details`.
 
 
 The whole data set contains three tables: `casualty`, `collision`, and `vehicle`. The data set is updated annually and contains detailed information about road traffic accidents in Great Britain.
