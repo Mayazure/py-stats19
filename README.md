@@ -127,3 +127,16 @@ load(
 # 101086  2021991201030  ...  POINT (270574.351 556367.939)
 # [101070 rows x 39 columns]
 ```
+
+```
+
+Reference:
+
+@article{gao2024sma,
+  title={SMA-Hyper: Spatiotemporal Multi-View Fusion Hypergraph Learning for Traffic Accident Prediction},
+  author={Gao, Xiaowei and Haworth, James and Ilyankou, Ilya and Zhang, Xianghui and Cheng, Tao and Law, Stephen and Chen, Huanfa},
+  journal={arXiv preprint arXiv:2407.17642},
+  year={2024}
+}
+
+```
